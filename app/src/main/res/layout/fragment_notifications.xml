@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/notifications_swipe_refresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8sp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notifications_recycler_view"

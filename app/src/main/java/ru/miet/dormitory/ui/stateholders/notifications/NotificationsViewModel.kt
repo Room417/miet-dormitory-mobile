@@ -3,7 +3,6 @@ package ru.miet.dormitory.ui.stateholders.notifications
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.miet.dormitory.data.model.notifications.Notification
 import ru.miet.dormitory.data.repository.login.LoginRepository
 import ru.miet.dormitory.data.repository.notifications.NotificationsRepository
 import ru.miet.dormitory.domain.JWTDecodeUseCase
