@@ -1,13 +1,36 @@
 package ru.miet.dormitory.ui.stateholders.requests
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import ru.miet.dormitory.data.repository.login.LoginRepository
+import ru.miet.dormitory.data.repository.requests.RequestsRepository
+import ru.miet.dormitory.domain.JWTDecodeUseCase
 
-class RequestsViewModel : ViewModel() {
+class RequestsViewModel(
+    private val loginRepository: LoginRepository, private val requestsRepository: RequestsRepository
+) : ViewModel() {
+    private val jwtDecodeUseCase = JWTDecodeUseCase()
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is requests Fragment"
+    val requestsGetRequestState = requestsRepository.requestsGetRequestStateLiveData
+
+    init {
+        makeRequestsGetRequest()
     }
-    val text: LiveData<String> = _text
+
+    fun makeRequestsGetRequest() {
+        viewModelScope.launch {
+            var accessToken: String = ""
+            loginRepository.loginPostRequestStateLiveData.value?.responseBody?.accessToken?.let {
+                accessToken = it
+            }
+
+            var userId: Int = -1
+            loginRepository.loginPostRequestStateLiveData.value?.responseBody?.accessToken?.let {
+                userId = jwtDecodeUseCase.decodeClaim(it, "id").toInt()
+            }
+
+            requestsRepository.makeRequestsGetRequest(accessToken, userId)
+        }
+    }
 }
