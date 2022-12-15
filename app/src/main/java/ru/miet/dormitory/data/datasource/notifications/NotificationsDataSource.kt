@@ -13,19 +13,22 @@ class NotificationsDataSource {
             Notification(
                 id = 3,
                 date = LocalDateTime.parse("2022-12-09T16:11:00"),
-                text = "The \"MIET Dormitory\" app has appeared in the Play Store, making life easier for students. Download and enjoy!",
+                title = "Состоялся релиз приложения \"MIET Dormitory\"!",
+                description = "В Play Store появилось приложение \"MIET Dormitory\", облегчающее жизнь студентам. Скачивайте и наслаждайтесь!",
                 authorId = 1
             ),
             Notification(
                 id = 2,
                 date = LocalDateTime.parse("2022-12-05T13:48:00"),
-                text = "In connection with the repair of the showers, please use the shower in the basement of the dormitory.",
+                title = "Ремонт в общежитии.",
+                description = "Комната для подготовки, располагающаяся в переходе между 13 и 15 корпусами, закрыта на ремонт.",
                 authorId = 1
             ),
             Notification(
                 id = 1,
                 date = LocalDateTime.parse("2022-12-01T10:15:00"),
-                text = "On Wednesday 07.12.2022 at 16:00, bed linen will be changed.",
+                title = "Смена постельного белья.",
+                description = "Смена постельного белья будет производиться в среду 07.12.2022 в 16:00.",
                 authorId = 1
             )
         )

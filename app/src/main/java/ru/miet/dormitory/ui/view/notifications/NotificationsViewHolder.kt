@@ -18,7 +18,8 @@ class NotificationsViewHolder(
      * Bind can be called several time with different data.
      */
     private val date = itemView.findViewById<TextView>(R.id.notification_date)
-    private val text = itemView.findViewById<TextView>(R.id.notification_text)
+    private val title = itemView.findViewById<TextView>(R.id.notification_title)
+    private val description = itemView.findViewById<TextView>(R.id.notification_description)
     private val delete = itemView.findViewById<ShapeableImageView>(R.id.notification_delete_icon)
 
     /**
@@ -27,7 +28,8 @@ class NotificationsViewHolder(
     fun bind(notification: NotificationItemModel) {
         val dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm")
         date.text = notification.date.format(dateTimeFormatter)
-        text.text = notification.text
+        title.text = notification.title
+        description.text = notification.description
         delete.setOnClickListener { viewModel.onDeletePressed(notification) }
     }
 }
