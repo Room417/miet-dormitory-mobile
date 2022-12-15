@@ -8,18 +8,27 @@
         android:id="@+id/notification_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/notification_text"
+        android:id="@+id/notification_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notification_date" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/notification_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notification_date" />
+        app:layout_constraintTop_toBottomOf="@+id/notification_title" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/notification_delete_icon"
@@ -27,7 +36,7 @@
         android:layout_height="48dp"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notification_text"
+        app:layout_constraintTop_toBottomOf="@+id/notification_description"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

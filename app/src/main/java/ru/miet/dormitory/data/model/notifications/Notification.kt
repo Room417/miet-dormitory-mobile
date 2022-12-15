@@ -5,7 +5,8 @@ import java.time.LocalDateTime
 data class Notification(
     val id: Int,
     val date: LocalDateTime,
-    val text: String,
+    val title: String,
+    val description: String,
     val isViewed: Boolean = false,
     val authorId: Int
 )

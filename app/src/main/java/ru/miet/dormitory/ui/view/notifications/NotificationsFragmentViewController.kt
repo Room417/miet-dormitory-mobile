@@ -49,5 +49,5 @@ class NotificationsFragmentViewController(
     }
 
     private fun Notification.transformToItemModel() =
-        NotificationItemModel(id, date, text, isViewed)
+        NotificationItemModel(id, date, title, description, isViewed)
 }
