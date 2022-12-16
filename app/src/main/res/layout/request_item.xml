@@ -29,7 +29,6 @@
                 android:id="@+id/request_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constrainedWidth="true"
@@ -40,7 +39,6 @@
                 android:id="@+id/request_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/request_title" />
@@ -59,8 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8sp"
-                    android:text="@string/requests_creation_date_title"
-                    android:textColor="@color/black" />
+                    android:text="@string/requests_creation_date_title" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/request_creation_date"
@@ -84,8 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8sp"
-                    android:text="@string/requests_provision_date_title"
-                    android:textColor="@color/black" />
+                    android:text="@string/requests_provision_date_title" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/request_provision_date"
