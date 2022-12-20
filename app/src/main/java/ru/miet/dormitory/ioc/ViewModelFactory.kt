@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import ru.miet.dormitory.data.repository.login.LoginRepository
 import ru.miet.dormitory.data.repository.notifications.NotificationsRepository
+import ru.miet.dormitory.data.repository.profile.ProfileRepository
 import ru.miet.dormitory.data.repository.requests.RequestsRepository
 import ru.miet.dormitory.data.repository.store.StoreRepository
 import ru.miet.dormitory.domain.usecases.DecodeAccessTokenUseCase
 import ru.miet.dormitory.ui.stateholders.login.LoginViewModel
 import ru.miet.dormitory.ui.stateholders.notifications.NotificationsViewModel
+import ru.miet.dormitory.ui.stateholders.profile.ProfileViewModel
 import ru.miet.dormitory.ui.stateholders.requests.RequestsViewModel
 import ru.miet.dormitory.ui.stateholders.store.StoreViewModel
 
@@ -17,6 +19,7 @@ class ViewModelFactory(
     private val storeRepository: StoreRepository,
     private val requestsRepository: RequestsRepository,
     private val notificationsRepository: NotificationsRepository,
+    private val profileRepository: ProfileRepository,
     private val decodeAccessTokenUseCase: DecodeAccessTokenUseCase
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
@@ -35,6 +38,11 @@ class ViewModelFactory(
         NotificationsViewModel::class.java -> NotificationsViewModel(
             loginRepository,
             notificationsRepository,
+            decodeAccessTokenUseCase
+        )
+        ProfileViewModel::class.java -> ProfileViewModel(
+            loginRepository,
+            profileRepository,
             decodeAccessTokenUseCase
         )
         else -> throw IllegalArgumentException("${modelClass.simpleName} cannot be provided.")

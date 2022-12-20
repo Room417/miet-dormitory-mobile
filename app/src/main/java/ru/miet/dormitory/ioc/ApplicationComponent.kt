@@ -2,10 +2,12 @@ package ru.miet.dormitory.ioc
 
 import ru.miet.dormitory.data.datasource.login.LoginDataSource
 import ru.miet.dormitory.data.datasource.notifications.NotificationsDataSource
+import ru.miet.dormitory.data.datasource.profile.ResidentDataSource
 import ru.miet.dormitory.data.datasource.requests.RequestsDataSource
 import ru.miet.dormitory.data.datasource.store.ProductsDataSource
 import ru.miet.dormitory.data.repository.login.LoginRepository
 import ru.miet.dormitory.data.repository.notifications.NotificationsRepository
+import ru.miet.dormitory.data.repository.profile.ProfileRepository
 import ru.miet.dormitory.data.repository.requests.RequestsRepository
 import ru.miet.dormitory.data.repository.store.StoreRepository
 import ru.miet.dormitory.domain.usecases.DecodeAccessTokenUseCase
@@ -19,11 +21,13 @@ class ApplicationComponent {
     private val productsDataSource = ProductsDataSource()
     private val requestsDataSource = RequestsDataSource()
     private val notificationsDataSource = NotificationsDataSource()
+    private val residentDataSource = ResidentDataSource()
 
     private val loginRepository = LoginRepository(loginDataSource)
     private val storeRepository = StoreRepository(productsDataSource)
     private val requestsRepository = RequestsRepository(requestsDataSource)
     private val notificationsRepository = NotificationsRepository(notificationsDataSource)
+    private val profileRepository = ProfileRepository(residentDataSource)
 
     private val decodeAccessTokenUseCase = DecodeAccessTokenUseCase(loginRepository)
 
@@ -32,6 +36,7 @@ class ApplicationComponent {
         storeRepository,
         requestsRepository,
         notificationsRepository,
+        profileRepository,
         decodeAccessTokenUseCase
     )
 }

@@ -4,6 +4,7 @@
     <string name="menu_title_store">Store</string>
     <string name="menu_title_requests">Requests</string>
     <string name="menu_title_notifications">Notifications</string>
+    <string name="menu_title_profile">Profile</string>
 
     <string name="login_title">Authorization</string>
     <string name="login_username_hint">Username</string>
@@ -16,4 +17,13 @@
     <string name="requests_request_was_provided">Provided</string>
     <string name="requests_request_was_not_provided">Not provided</string>
 
+    <string name="profile_date_of_birth_title">Date of birth</string>
+    <string name="profile_place_of_birth_title">Place of birth</string>
+    <string name="profile_grade_title">Grade</string>
+    <string name="profile_study_direction_title">Study direction</string>
+    <string name="profile_group_title">Group</string>
+    <string name="profile_student_card_title">Student card number</string>
+    <string name="profile_building_number_title">Building</string>
+    <string name="profile_room_number_title">Room</string>
+    <string name="profile_account_sign_out">Sign Out</string>
 </resources>
