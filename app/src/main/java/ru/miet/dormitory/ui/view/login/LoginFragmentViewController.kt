@@ -29,12 +29,14 @@ class LoginFragmentViewController(
 
     private fun setUpLoginPostRequestObserver() {
         viewModel.loginPostRequestState.observe(lifecycleOwner) { response ->
+            if (response.responseBody == null)
+                return@observe
             if (response.error != null) {
                 Toast.makeText(activity, response.error, Toast.LENGTH_LONG).show()
-            } else {
-                progressBar.visibility = View.GONE
-                navController.navigate(R.id.action_navigation_login_to_navigation_store)
+                return@observe
             }
+            progressBar.visibility = View.GONE
+            navController.navigate(R.id.action_navigation_login_to_navigation_store)
         }
     }
 

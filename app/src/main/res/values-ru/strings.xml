@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MIET Dormitory</string>
+
     <string name="menu_title_store">Бартер</string>
     <string name="menu_title_requests">Заявки</string>
     <string name="menu_title_notifications">Уведомления</string>
+    <string name="menu_title_profile">Профиль</string>
+
     <string name="login_title">Авторизация</string>
     <string name="login_username_hint">Имя пользователя</string>
     <string name="login_password_hint">Пароль</string>
     <string name="login_sign_in_button">Войти</string>
     <string name="login_empty_field_error">Поле не может быть пустым</string>
+
     <string name="requests_creation_date_title">Дата создания</string>
     <string name="requests_provision_date_title">Дата оказания услуги</string>
     <string name="requests_request_was_provided">Оказана</string>
     <string name="requests_request_was_not_provided">Не оказана</string>
+
+    <string name="profile_date_of_birth_title">Дата рождения</string>
+    <string name="profile_place_of_birth_title">Место рождения</string>
+    <string name="profile_grade_title">Ступень обучения</string>
+    <string name="profile_study_direction_title">Направление подготовки</string>
+    <string name="profile_group_title">Группа</string>
+    <string name="profile_student_card_title">Номер студенческого билета</string>
+    <string name="profile_building_number_title">Корпус</string>
+    <string name="profile_room_number_title">Комната</string>
+    <string name="profile_account_sign_out">Выйти</string>
 </resources>

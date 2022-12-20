@@ -29,4 +29,8 @@ class LoginRepository(private val dataSource: LoginDataSource) {
             )
         }
     }
+
+    fun clearLoginPostRequestState() {
+        _loginPostRequestStateLiveData.value = LoginPostRequestState()
+    }
 }

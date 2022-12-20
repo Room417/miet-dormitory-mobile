@@ -9,7 +9,7 @@
         android:id="@+id/navigation_login"
         android:name="ru.miet.dormitory.ui.view.login.LoginFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_navigation_login_to_navigation_store"
             app:destination="@id/navigation_store" />
@@ -32,4 +32,16 @@
         android:name="ru.miet.dormitory.ui.view.notifications.NotificationsFragment"
         android:label="@string/menu_title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="ru.miet.dormitory.ui.view.profile.ProfileFragment"
+        android:label="@string/menu_title_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_login"
+            app:destination="@id/navigation_login"
+            app:popUpTo="@id/navigation_login"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
