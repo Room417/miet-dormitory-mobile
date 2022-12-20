@@ -5,17 +5,22 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.miet.dormitory.data.repository.login.LoginRepository
 import ru.miet.dormitory.data.repository.requests.RequestsRepository
-import ru.miet.dormitory.domain.JWTDecodeUseCase
+import ru.miet.dormitory.domain.usecases.DecodeAccessTokenUseCase
 
 class RequestsViewModel(
-    private val loginRepository: LoginRepository, private val requestsRepository: RequestsRepository
+    private val loginRepository: LoginRepository,
+    private val requestsRepository: RequestsRepository,
+    private val decodeAccessTokenUseCase: DecodeAccessTokenUseCase
 ) : ViewModel() {
-    private val jwtDecodeUseCase = JWTDecodeUseCase()
-
     val requestsGetRequestState = requestsRepository.requestsGetRequestStateLiveData
 
     init {
         makeRequestsGetRequest()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        decodeAccessTokenUseCase.cancelAllOperations()
     }
 
     fun makeRequestsGetRequest() {
@@ -26,8 +31,8 @@ class RequestsViewModel(
             }
 
             var userId: Int = -1
-            loginRepository.loginPostRequestStateLiveData.value?.responseBody?.accessToken?.let {
-                userId = jwtDecodeUseCase.decodeClaim(it, "id").toInt()
+            decodeAccessTokenUseCase.decodedAccessToken.value?.id?.let {
+                userId = it
             }
 
             requestsRepository.makeRequestsGetRequest(accessToken, userId)
