@@ -8,6 +8,7 @@ import ru.miet.dormitory.data.repository.login.LoginRepository
 import ru.miet.dormitory.data.repository.notifications.NotificationsRepository
 import ru.miet.dormitory.data.repository.requests.RequestsRepository
 import ru.miet.dormitory.data.repository.store.StoreRepository
+import ru.miet.dormitory.domain.usecases.DecodeAccessTokenUseCase
 
 /**
  * Container that stores all classes, that are Application-scoped,
@@ -24,10 +25,13 @@ class ApplicationComponent {
     private val requestsRepository = RequestsRepository(requestsDataSource)
     private val notificationsRepository = NotificationsRepository(notificationsDataSource)
 
+    private val decodeAccessTokenUseCase = DecodeAccessTokenUseCase(loginRepository)
+
     val viewModelFactory = ViewModelFactory(
         loginRepository,
         storeRepository,
         requestsRepository,
-        notificationsRepository
+        notificationsRepository,
+        decodeAccessTokenUseCase
     )
 }

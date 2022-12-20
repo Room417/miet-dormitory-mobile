@@ -5,19 +5,23 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.miet.dormitory.data.repository.login.LoginRepository
 import ru.miet.dormitory.data.repository.notifications.NotificationsRepository
-import ru.miet.dormitory.domain.JWTDecodeUseCase
+import ru.miet.dormitory.domain.usecases.DecodeAccessTokenUseCase
 import ru.miet.dormitory.ui.model.notifications.NotificationItemModel
 
 class NotificationsViewModel(
     private val loginRepository: LoginRepository,
-    private val notificationsRepository: NotificationsRepository
+    private val notificationsRepository: NotificationsRepository,
+    private val decodeAccessTokenUseCase: DecodeAccessTokenUseCase,
 ) : ViewModel() {
-    private val jwtDecodeUseCase = JWTDecodeUseCase()
-
     val notificationsGetRequestState = notificationsRepository.notificationGetRequestStateLiveData
 
     init {
         makeNotificationsGetRequest()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        decodeAccessTokenUseCase.cancelAllOperations()
     }
 
     fun makeNotificationsGetRequest() {
@@ -28,8 +32,8 @@ class NotificationsViewModel(
             }
 
             var userId: Int = -1
-            loginRepository.loginPostRequestStateLiveData.value?.responseBody?.accessToken?.let {
-                userId = jwtDecodeUseCase.decodeClaim(it, "id").toInt()
+            decodeAccessTokenUseCase.decodedAccessToken.value?.id?.let {
+                userId = it
             }
 
             notificationsRepository.makeNotificationsGetRequest(accessToken, userId)
